@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="offset_2">2dp</dimen>
+    <dimen name="offset_4">4dp</dimen>
+    <dimen name="offset_8">8dp</dimen>
+    <dimen name="offset_16">16dp</dimen>
+    <dimen name="offset_32">32dp</dimen>
+    <dimen name="offset_48">48dp</dimen>
+    <dimen name="offset_56">56dp</dimen>
+
+    <dimen name="height_btn">48dp</dimen>
+    <dimen name="height_btn_secondary">40dp</dimen>
+
+    <dimen name="size_min_img">24dp</dimen>
+
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+</resources>

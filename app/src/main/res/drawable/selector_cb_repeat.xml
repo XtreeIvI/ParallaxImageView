@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:bottom="@dimen/offset_8"
+                  android:drawable="@drawable/ic_repeat_black"
+                  android:left="@dimen/offset_8"
+                  android:right="@dimen/offset_8"
+                  android:top="@dimen/offset_8"/>
+        </layer-list>
+    </item>
+    <item android:state_checked="false">
+        <layer-list>
+            <item android:drawable="@drawable/bg_corners_8_black_25p"/>
+            <item android:bottom="@dimen/offset_8"
+                  android:drawable="@drawable/ic_repeat"
+                  android:left="@dimen/offset_8"
+                  android:right="@dimen/offset_8"
+                  android:top="@dimen/offset_8"/>
+        </layer-list>
+    </item>
+</selector>

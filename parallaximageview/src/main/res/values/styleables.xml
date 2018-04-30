@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ParallaxImageView">
+        <attr name="piv_parallax_direction_flag">
+            <flag name="vertical" value="1"/>
+            <flag name="horizontal" value="2"/>
+        </attr>
+        <attr name="piv_image_corner_clip_flag">
+            <flag name="source" value="1"/>
+            <flag name="tension" value="2"/>
+            <flag name="bound" value="4"/>
+        </attr>
+        <attr name="piv_image_corner_type" format="enum">
+            <enum name="round" value="1"/>
+            <enum name="bevel" value="2"/>
+        </attr>
+        <attr name="piv_view_corner_type" format="enum">
+            <enum name="round" value="1"/>
+            <enum name="bevel" value="2"/>
+        </attr>
+
+        <attr name="piv_image_corner_size" format="dimension"/>
+        <attr name="piv_view_corner_size" format="dimension"/>
+        <attr name="piv_background_corner_radius" format="dimension"/>
+        <attr name="piv_parallax_tension" format="float"/>
+        <attr name="piv_parallax_absolute_tension" format="dimension"/>
+        <attr name="piv_parallax_v_fraction" format="float"/>
+        <attr name="piv_parallax_h_fraction" format="float"/>
+        <attr name="piv_swap_parallax_directions" format="boolean"/>
+        <attr name="piv_inverse_parallax_directions" format="boolean"/>
+        <attr name="piv_prevent_view_corner_overlap" format="boolean"/>
+        <attr name="piv_prevent_image_corner_overlap" format="boolean"/>
+        <attr name="piv_view_corner_wh_ratio_change_enable" format="boolean"/>
+        <attr name="piv_image_corner_wh_ratio_change_enable" format="boolean"/>
+        <attr name="piv_viewport_corner_force_wh_ratio_equal" format="boolean"/>
+        <attr name="piv_image_corner_force_wh_ratio_equal" format="boolean"/>
+        <attr name="piv_force_parallax_by_scale" format="boolean"/>
+        <attr name="piv_force_recalculation" format="boolean"/>
+    </declare-styleable>
+</resources>

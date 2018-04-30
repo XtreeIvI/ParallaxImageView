@@ -1,0 +1,1379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <requestFocus/>
+    </View>
+
+    <FrameLayout
+        android:id="@+id/btnPivLining"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/offset_16">
+
+        <devlight.io.xtreeivi.parallaximageview.ParallaxImageView
+            android:id="@+id/parallaxImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/square_image_1"/>
+
+        <ImageView
+            android:id="@+id/btnPivInfo"
+            android:layout_width="@dimen/height_btn_secondary"
+            android:layout_height="@dimen/height_btn_secondary"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/offset_8"
+            android:background="@drawable/bg_circle_black_25p"
+            android:padding="@dimen/offset_8"
+            android:src="@drawable/ic_info"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/offset_56"
+                android:paddingEnd="@dimen/offset_16"
+                android:paddingLeft="@dimen/offset_16"
+                android:paddingRight="@dimen/offset_16"
+                android:paddingStart="@dimen/offset_16"
+                android:paddingTop="@dimen/offset_16">
+
+                <LinearLayout
+                    android:id="@+id/llCustomImageContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_info_black_16"
+                        android:drawablePadding="@dimen/offset_4"
+                        android:drawableRight="@drawable/ic_info_black_16"
+                        android:text="@string/piv_custom_image_url"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/bender"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/etxtImageNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:hint="@string/piv_image_range"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:padding="@dimen/offset_8"
+                            android:singleLine="true"/>
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/etxtImageWidth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_16"
+                            android:layout_marginStart="@dimen/offset_16"
+                            android:layout_weight="1"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:hint="@string/piv_width_px"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:padding="@dimen/offset_8"
+                            android:singleLine="true"/>
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/etxtImageHeight"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_16"
+                            android:layout_marginStart="@dimen/offset_16"
+                            android:layout_weight="1"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:hint="@string/piv_height_px"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:padding="@dimen/offset_8"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginBottom="@dimen/offset_4"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:gravity="center_vertical">
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbCustomImageBlur"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_image_blur"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbCustomImageGrayscale"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_image_grayscale"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/btnCustomImageApply"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_marginLeft="@dimen/offset_16"
+                            android:layout_marginStart="@dimen/offset_16"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_corners_8_black_25p"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:padding="@dimen/offset_8"
+                            android:text="@string/piv_apply"
+                            app:fontFamily="@font/bender"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:layout_marginTop="@dimen/offset_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_view_configuration"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/bender"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/offset_2"
+                    android:background="@color/black"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:text="@string/piv_view_width"
+                    android:textColor="@color/black"
+                    app:fontFamily="@font/bender"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbPivWidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:max="100"
+                        android:padding="@dimen/offset_8"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/seek_progress"
+                        android:thumb="@drawable/seek_thumb"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/etxtViewWidth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/offset_16"
+                        android:layout_marginStart="@dimen/offset_16"
+                        android:layout_weight="1"
+                        android:digits="0123456789"
+                        android:fontFamily="@font/bender"
+                        android:gravity="center"
+                        android:hint="@string/piv_px"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:padding="@dimen/offset_8"
+                        android:singleLine="true"/>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/piv_view_height"
+                    android:textColor="@color/black"
+                    app:fontFamily="@font/bender"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbPivHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:max="100"
+                        android:padding="@dimen/offset_8"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/seek_progress"
+                        android:thumb="@drawable/seek_thumb"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/etxtViewHeight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/offset_16"
+                        android:layout_marginStart="@dimen/offset_16"
+                        android:layout_weight="1"
+                        android:digits="0123456789"
+                        android:fontFamily="@font/bender"
+                        android:gravity="center"
+                        android:hint="@string/piv_px"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:padding="@dimen/offset_8"
+                        android:singleLine="true"/>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/piv_view_padding"
+                    android:textColor="@color/black"
+                    app:fontFamily="@font/bender"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatSeekBar
+                        android:id="@+id/sbPivPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:max="100"
+                        android:padding="@dimen/offset_8"
+                        android:progress="100"
+                        android:progressDrawable="@drawable/seek_progress"
+                        android:thumb="@drawable/seek_thumb"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/etxtViewPadding"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/offset_16"
+                        android:layout_marginStart="@dimen/offset_16"
+                        android:layout_weight="1"
+                        android:digits="0123456789"
+                        android:fontFamily="@font/bender"
+                        android:gravity="center"
+                        android:hint="@string/piv_px"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:padding="@dimen/offset_8"
+                        android:singleLine="true"/>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/cbBindWidthHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_btn_secondary"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:checked="false"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_bind_view_width_and_height"
+                    app:fontFamily="@font/bender"/>
+
+                <LinearLayout
+                    android:id="@+id/llParallaxDirectionContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_info_black_16"
+                        android:drawablePadding="@dimen/offset_4"
+                        android:drawableRight="@drawable/ic_info_black_16"
+                        android:fontFamily="@font/bender"
+                        android:gravity="center_vertical"
+                        android:text="@string/piv_parallax_direction"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/bender"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginBottom="@dimen/offset_4"
+                        android:layout_marginTop="@dimen/offset_4">
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbParallaxDirectionHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_horizontal"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbParallaxDirectionVertical"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_vertical"
+                            app:fontFamily="@font/bender"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llParallaxHorizontalFractionContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_4"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_parallax_horizontal_fraction"
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtHorizontalFraction"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:fontFamily="@font/bender"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/bender"
+                            tools:text="(0.5)"/>
+
+                        <ImageView
+                            android:id="@+id/imgParallaxHorizontalFractionBlock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_block"
+                            android:visibility="gone"
+                            tools:visibility="visible"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbHorizontalLoop"
+                            android:layout_width="@dimen/height_btn_secondary"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:button="@drawable/selector_cb_repeat"
+                            android:checked="false"
+                            android:gravity="center"
+                            android:padding="@dimen/offset_8"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/offset_4"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatSeekBar
+                            android:id="@+id/sbHorizontalFraction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:max="100"
+                            android:padding="@dimen/offset_8"
+                            android:progressDrawable="@drawable/seek_progress"
+                            android:thumb="@drawable/seek_thumb"/>
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/etxtHorizontalFraction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_16"
+                            android:layout_marginStart="@dimen/offset_16"
+                            android:layout_weight="1"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:hint="@string/piv_percent"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:padding="@dimen/offset_8"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llParallaxVerticalFractionContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_4"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_parallax_vertical_fraction"
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/bender"
+                            />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtVerticalFraction"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:fontFamily="@font/bender"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/bender"
+                            tools:text="(0.5)"/>
+
+                        <ImageView
+                            android:id="@+id/imgParallaxVerticalFractionBlock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_block"
+                            android:visibility="gone"
+                            tools:visibility="visible"/>
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbVerticalLoop"
+                            android:layout_width="@dimen/height_btn_secondary"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:button="@drawable/selector_cb_repeat"
+                            android:checked="false"
+                            android:gravity="center"
+                            android:padding="@dimen/offset_8"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/offset_4"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatSeekBar
+                            android:id="@+id/sbVerticalFraction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:max="100"
+                            android:padding="@dimen/offset_8"
+                            android:progressDrawable="@drawable/seek_progress"
+                            android:thumb="@drawable/seek_thumb"/>
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/etxtVerticalFraction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_16"
+                            android:layout_marginStart="@dimen/offset_16"
+                            android:layout_weight="1"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:hint="@string/piv_percent"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:padding="@dimen/offset_8"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llParallaxTensionFractionContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_4"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_parallax_tension_fraction"
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/bender"
+                            />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtParallaxTensionFraction"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:fontFamily="@font/bender"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/bender"
+                            tools:text="(0.1)"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtParallaxTensionFractionAbsoluteOn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/bender"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:text="@string/piv_absolute_tension"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/text_12"
+                            android:visibility="gone"
+                            app:fontFamily="@font/bender"
+                            tools:visibility="visible"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/offset_4"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatSeekBar
+                            android:id="@+id/sbParallaxTensionFraction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:max="100"
+                            android:padding="@dimen/offset_8"
+                            android:progressDrawable="@drawable/seek_progress"
+                            android:thumb="@drawable/seek_thumb"/>
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/etxtParallaxTensionFraction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_16"
+                            android:layout_marginStart="@dimen/offset_16"
+                            android:layout_weight="1"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:hint="@string/piv_percent"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:padding="@dimen/offset_8"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llParallaxAbsoluteTensionContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_info_black_16"
+                        android:drawablePadding="@dimen/offset_4"
+                        android:drawableRight="@drawable/ic_info_black_16"
+                        android:fontFamily="@font/bender"
+                        android:text="@string/piv_absolute_parallax_tension"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/bender"
+                        />
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/etxtAbsoluteParallaxTension"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="-0123456789"
+                        android:fontFamily="@font/bender"
+                        android:hint="@string/piv_px"
+                        android:inputType="numberSigned"
+                        android:maxLength="4"
+                        android:padding="@dimen/offset_8"
+                        android:singleLine="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llParallaxInterpolatorContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_info_black_16"
+                        android:drawablePadding="@dimen/offset_4"
+                        android:drawableRight="@drawable/ic_info_black_16"
+                        android:fontFamily="@font/bender"
+                        android:text="@string/piv_parallax_interpolator"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/bender"
+                        />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/btnParallaxInterpolator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:background="@drawable/bg_corners_8_black_25p"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/bender"
+                        android:gravity="center"
+                        android:padding="@dimen/offset_8"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/bender"
+                        tools:text="Linear Interpolator"/>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/offset_8"
+                    android:fontFamily="@font/bender"
+                    android:gravity="center_vertical"
+                    android:text="@string/piv_other_parallax_settings"
+                    android:textColor="@color/black"
+                    app:fontFamily="@font/bender"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/llForceParallaxByScaleContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:layout_marginTop="@dimen/offset_4">
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/cbForceParallaxByScale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/height_btn_secondary"
+                        android:checked="false"
+                        android:drawableEnd="@drawable/ic_info_black_16"
+                        android:drawablePadding="@dimen/offset_8"
+                        android:drawableRight="@drawable/ic_info_black_16"
+                        android:fontFamily="@font/bender"
+                        android:singleLine="true"
+                        android:text="@string/piv_force_parallax_by_scale"
+                        app:fontFamily="@font/bender"/>
+
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/txtForceParallaxByScaleScaleType"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/offset_8"
+                        android:layout_marginStart="@dimen/offset_8"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/bender"
+                        android:gravity="end"
+                        android:lines="2"
+                        android:text="@string/piv_center_crop_or_fit_xy"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/text_12"
+                        android:visibility="gone"
+                        app:fontFamily="@font/bender"
+                        tools:visibility="visible"/>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/cbInverseParallaxDirections"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_btn_secondary"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:checked="false"
+                    android:drawableEnd="@drawable/ic_info_black_16"
+                    android:drawablePadding="@dimen/offset_8"
+                    android:drawableRight="@drawable/ic_info_black_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_inverse_parallax_directions"
+                    app:fontFamily="@font/bender"/>
+
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/cbSwapParallaxDirections"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_btn_secondary"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:checked="false"
+                    android:drawableEnd="@drawable/ic_info_black_16"
+                    android:drawablePadding="@dimen/offset_8"
+                    android:drawableRight="@drawable/ic_info_black_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_swap_parallax_directions"
+                    app:fontFamily="@font/bender"/>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/cbForceRecalculations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_btn_secondary"
+                    android:checked="false"
+                    android:drawableEnd="@drawable/ic_info_black_16"
+                    android:drawablePadding="@dimen/offset_8"
+                    android:drawableRight="@drawable/ic_info_black_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_force_recalculations"
+                    app:fontFamily="@font/bender"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:layout_marginTop="@dimen/offset_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_view_clip"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/bender"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/offset_2"
+                    android:background="@color/black"/>
+
+                <LinearLayout
+                    android:id="@+id/llViewCornerTypeContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:drawableEnd="@drawable/ic_info_black_16"
+                        android:drawablePadding="@dimen/offset_8"
+                        android:drawableRight="@drawable/ic_info_black_16"
+                        android:fontFamily="@font/bender"
+                        android:text="@string/piv_view_corner_type"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/bender"/>
+
+                    <RadioGroup
+                        android:id="@+id/rgViewCornerType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/rbViewCornerTypeRound"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_round"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatRadioButton
+                            android:id="@+id/rbViewCornerTypeBevel"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_bevel"
+                            app:fontFamily="@font/bender"/>
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llViewCornerSizeContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:gravity="center_vertical">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_8"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_view_corner_size"
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtViewCornerForcedWhEqualOn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/bender"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:text="@string/piv_forced_w_h_corners_equal"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/text_12"
+                            android:visibility="gone"
+                            app:fontFamily="@font/bender"
+                            tools:visibility="visible"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llViewCornerControlContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/offset_4"
+                        android:layout_marginTop="@dimen/offset_4"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.AppCompatSeekBar
+                            android:id="@+id/sbViewCornerSize"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:max="100"
+                            android:padding="@dimen/offset_8"
+                            android:progressDrawable="@drawable/seek_progress"
+                            android:thumb="@drawable/seek_thumb"/>
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/etxtViewCornerSize"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_16"
+                            android:layout_marginStart="@dimen/offset_16"
+                            android:layout_weight="1"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/bender"
+                            android:gravity="center"
+                            android:hint="@string/piv_px"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:padding="@dimen/offset_8"
+                            android:singleLine="true"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/cbPreventViewCornerOverlap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_btn_secondary"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:checked="true"
+                    android:drawableEnd="@drawable/ic_info_black_16"
+                    android:drawablePadding="@dimen/offset_8"
+                    android:drawableRight="@drawable/ic_info_black_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_prevent_view_corner_overlap"
+                    app:fontFamily="@font/bender"/>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/cbAllowViewCornerWhRatioChange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_btn_secondary"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:checked="false"
+                    android:drawableEnd="@drawable/ic_info_black_16"
+                    android:drawablePadding="@dimen/offset_8"
+                    android:drawableRight="@drawable/ic_info_black_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_allow_view_corner_width_height_ratio_change"
+                    app:fontFamily="@font/bender"/>
+
+                <android.support.v7.widget.AppCompatCheckBox
+                    android:id="@+id/cbForceViewCornerWhEqual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_btn_secondary"
+                    android:layout_marginTop="@dimen/offset_4"
+                    android:checked="false"
+                    android:drawableEnd="@drawable/ic_info_black_16"
+                    android:drawablePadding="@dimen/offset_8"
+                    android:drawableRight="@drawable/ic_info_black_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_force_view_corner_width_height_equal"
+                    app:fontFamily="@font/bender"/>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/offset_4"
+                    android:layout_marginTop="@dimen/offset_16"
+                    android:fontFamily="@font/bender"
+                    android:text="@string/piv_image_clip"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/bender"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/offset_2"
+                    android:background="@color/black"/>
+
+                <LinearLayout
+                    android:id="@+id/llImageCornerClipFlagContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginTop="@dimen/offset_4">
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_8"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_image_corner_clip_flag"
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/txtImageCornerNoFlag"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/offset_8"
+                            android:layout_marginStart="@dimen/offset_8"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/bender"
+                            android:gravity="end"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:text="@string/piv_no_corner_flag_selected"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/text_12"
+                            android:visibility="gone"
+                            app:fontFamily="@font/bender"
+                            tools:visibility="visible"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/offset_4">
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbImageCornerClipSource"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_source"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbImageCornerClipTension"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_tension"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbImageCornerClipBound"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_bound"
+                            app:fontFamily="@font/bender"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/llImageCornerClipControlsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/llImageCornerClipTypeContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_4"
+                                android:drawableEnd="@drawable/ic_info_black_16"
+                                android:drawablePadding="@dimen/offset_8"
+                                android:drawableRight="@drawable/ic_info_black_16"
+                                android:fontFamily="@font/bender"
+                                android:text="@string/piv_image_corner_type"
+                                android:textColor="@color/black"
+                                app:fontFamily="@font/bender"/>
+
+                            <RadioGroup
+                                android:id="@+id/rgImageCornerType"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_4"
+                                android:orientation="horizontal">
+
+                                <android.support.v7.widget.AppCompatRadioButton
+                                    android:id="@+id/rbImageCornerTypeRound"
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/height_btn_secondary"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:fontFamily="@font/bender"
+                                    android:text="@string/piv_round"
+                                    app:fontFamily="@font/bender"/>
+
+                                <android.support.v7.widget.AppCompatRadioButton
+                                    android:id="@+id/rbImageCornerTypeBevel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/height_btn_secondary"
+                                    android:layout_weight="1"
+                                    android:checked="false"
+                                    android:fontFamily="@font/bender"
+                                    android:text="@string/piv_bevel"
+                                    app:fontFamily="@font/bender"/>
+                            </RadioGroup>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llImageCornerSizeContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_4"
+                                android:gravity="center_vertical">
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:drawableEnd="@drawable/ic_info_black_16"
+                                    android:drawablePadding="@dimen/offset_8"
+                                    android:drawableRight="@drawable/ic_info_black_16"
+                                    android:fontFamily="@font/bender"
+                                    android:text="@string/piv_image_corner_size"
+                                    android:textColor="@color/black"
+                                    app:fontFamily="@font/bender"/>
+
+                                <android.support.v7.widget.AppCompatTextView
+                                    android:id="@+id/txtImageCornerForcedWhEqualOn"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/offset_8"
+                                    android:layout_marginStart="@dimen/offset_8"
+                                    android:layout_weight="1"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/bender"
+                                    android:gravity="end"
+                                    android:lines="1"
+                                    android:singleLine="true"
+                                    android:text="@string/piv_forced_w_h_corners_equal"
+                                    android:textColor="@color/red"
+                                    android:textSize="@dimen/text_12"
+                                    android:visibility="gone"
+                                    app:fontFamily="@font/bender"
+                                    tools:visibility="visible"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llImageCornerControlContainer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/offset_4"
+                                android:layout_marginTop="@dimen/offset_4"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <android.support.v7.widget.AppCompatSeekBar
+                                    android:id="@+id/sbImageCornerSize"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:max="100"
+                                    android:padding="@dimen/offset_8"
+                                    android:progressDrawable="@drawable/seek_progress"
+                                    android:thumb="@drawable/seek_thumb"/>
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/etxtImageCornerSize"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/offset_16"
+                                    android:layout_marginStart="@dimen/offset_16"
+                                    android:layout_weight="1"
+                                    android:digits="0123456789"
+                                    android:fontFamily="@font/bender"
+                                    android:gravity="center"
+                                    android:hint="@string/piv_px"
+                                    android:inputType="number"
+                                    android:maxLength="4"
+                                    android:padding="@dimen/offset_8"
+                                    android:singleLine="true"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbPreventImageCornerOverlap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_marginTop="@dimen/offset_4"
+                            android:checked="true"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_8"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_prevent_image_corner_overlap"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbAllowImageCornerWhRatioChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_marginTop="@dimen/offset_4"
+                            android:checked="false"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_8"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_allow_image_image_width_height_ratio_change"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/cbForceImageCornerWhEqual"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/height_btn_secondary"
+                            android:layout_marginTop="@dimen/offset_4"
+                            android:checked="false"
+                            android:drawableEnd="@drawable/ic_info_black_16"
+                            android:drawablePadding="@dimen/offset_8"
+                            android:drawableRight="@drawable/ic_info_black_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_force_image_corner_width_height_equal"
+                            app:fontFamily="@font/bender"/>
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/offset_4"
+                            android:layout_marginTop="@dimen/offset_16"
+                            android:fontFamily="@font/bender"
+                            android:text="@string/piv_background_round_clip"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/bender"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/offset_2"
+                            android:background="@color/black"/>
+
+                        <LinearLayout
+                            android:id="@+id/llBackgroundRoundCornerContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_4"
+                                android:drawableEnd="@drawable/ic_info_black_16"
+                                android:drawablePadding="@dimen/offset_8"
+                                android:drawableRight="@drawable/ic_info_black_16"
+                                android:fontFamily="@font/bender"
+                                android:text="@string/piv_background_corner_radius"
+                                android:textColor="@color/black"
+                                app:fontFamily="@font/bender"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/offset_4"
+                                android:layout_marginTop="@dimen/offset_4"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <android.support.v7.widget.AppCompatSeekBar
+                                    android:id="@+id/sbBackgroundCornerRadius"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:max="100"
+                                    android:padding="@dimen/offset_8"
+                                    android:progressDrawable="@drawable/seek_progress"
+                                    android:thumb="@drawable/seek_thumb"/>
+
+                                <android.support.v7.widget.AppCompatEditText
+                                    android:id="@+id/etxtBackgroundCornerRadius"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/offset_16"
+                                    android:layout_marginStart="@dimen/offset_16"
+                                    android:layout_weight="1"
+                                    android:digits="0123456789"
+                                    android:fontFamily="@font/bender"
+                                    android:gravity="center"
+                                    android:hint="@string/piv_px"
+                                    android:inputType="number"
+                                    android:maxLength="4"
+                                    android:padding="@dimen/offset_8"
+                                    android:singleLine="true"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/viewImageCornerDisabler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:visibility="gone"/>
+                </FrameLayout>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/offset_16"
+            android:layout_gravity="top"
+            android:background="@drawable/bg_tint_top"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/offset_16"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_tint_bottom"/>
+    </FrameLayout>
+</LinearLayout>

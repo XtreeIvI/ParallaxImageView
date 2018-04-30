@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"  android:paddingLeft="@dimen/offset_16"
+              android:paddingStart="@dimen/offset_16"
+              android:paddingRight="@dimen/offset_16"
+              android:paddingEnd="@dimen/offset_16"
+              android:paddingTop="@dimen/offset_8"
+              android:paddingBottom="@dimen/offset_8">
+
+    <devlight.io.xtreeivi.parallaximageview.ParallaxImageView
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        app:piv_view_corner_size="@dimen/offset_16"
+        android:scaleType="centerCrop"
+        android:padding="@dimen/offset_4"
+        android:background="@drawable/bg_image_1"
+        tools:background="@color/colorPrimary"
+        tools:src="@drawable/square_image_1"/>
+</LinearLayout>

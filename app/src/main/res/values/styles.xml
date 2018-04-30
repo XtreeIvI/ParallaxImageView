@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/black_50p</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
+
+    <style name="TabStyle">
+        <item name="tabSelectedTextColor">@color/black</item>
+        <item name="tabTextColor">@android:color/darker_gray</item>
+        <item name="tabTextAppearance">@style/TabTextStyle</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabIndicatorColor">@color/black</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_btn</item>
+        <item name="tabContentStart">@dimen/offset_8</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabMaxWidth">0dp</item>
+        <item name="tabPadding">@dimen/offset_8</item>
+    </style>
+
+    <style name="TabTextStyle">
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

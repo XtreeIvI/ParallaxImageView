@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingBottom="@dimen/offset_8"
+              android:paddingEnd="@dimen/offset_16"
+              android:paddingLeft="@dimen/offset_16"
+              android:paddingRight="@dimen/offset_16"
+              android:paddingStart="@dimen/offset_16"
+              android:paddingTop="@dimen/offset_8">
+
+    <devlight.io.xtreeivi.parallaximageview.ParallaxImageView
+        android:id="@+id/parallaxImageViewItem"
+        android:layout_width="104dp"
+        android:layout_height="104dp"
+        android:scaleType="centerCrop"
+        app:piv_parallax_direction_flag="vertical"
+        app:piv_force_parallax_by_scale="true"
+        app:piv_parallax_absolute_tension="@dimen/offset_16"
+        app:piv_view_corner_size="@dimen/offset_16"
+        tools:background="@color/colorPrimary"
+        tools:src="@drawable/square_image_1"/>
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/offset_16"
+        android:layout_marginStart="@dimen/offset_16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtItemScaleType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scale Type: Center Crop"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/offset_4"
+            android:id="@+id/txtItemImageType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Image Type: URL"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/offset_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Force Parallax By Scale: ON\nAbsolute Tension: 16 dp\nParallax Directions: Vertical"/>
+    </LinearLayout>
+</LinearLayout>
