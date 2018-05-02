@@ -21,6 +21,7 @@
         app:piv_force_parallax_by_scale="true"
         app:piv_parallax_absolute_tension="@dimen/offset_16"
         app:piv_view_corner_size="@dimen/offset_16"
+        app:piv_dependant_parent_id="@+id/rvExampleList"
         tools:background="@color/colorPrimary"
         tools:src="@drawable/square_image_1"/>
 

@@ -1,6 +1,5 @@
 package devlight.io.xtreeivi.sample.fragment
 
-import devlight.io.xtreeivi.parallaximageview.utils.ParallaxScrollListener
 import devlight.io.xtreeivi.sample.R
 import devlight.io.xtreeivi.sample.adapter.list.MainListAdapter
 import devlight.io.xtreeivi.sample.fragment.core.BaseFragment
@@ -16,6 +15,5 @@ class ParallaxListFragment : BaseFragment() {
     override fun setUI() {
         rvExampleList.setHasFixedSize(true)
         rvExampleList.adapter = MainListAdapter(this@ParallaxListFragment.activity!!)
-        rvExampleList.addOnScrollListener(ParallaxScrollListener())
     }
 }

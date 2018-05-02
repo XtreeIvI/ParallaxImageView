@@ -9,11 +9,13 @@ import android.graphics.RectF
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.support.annotation.IdRes
 import android.support.annotation.RequiresApi
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.util.AttributeSet
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import android.widget.ImageView.ScaleType.*
@@ -25,13 +27,14 @@ import devlight.io.xtreeivi.parallaximageview.ParallaxImageView.ParallaxDirectio
 import devlight.io.xtreeivi.parallaximageview.ParallaxImageView.ParallaxDirectionFlag.NONE
 import devlight.io.xtreeivi.parallaximageview.ParallaxImageView.ParallaxDirectionFlag.VERTICAL
 import devlight.io.xtreeivi.parallaximageview.extension.*
+import java.lang.ref.WeakReference
 
 /**
  * Creator: XtreeIvI (Mikola Melnik), xtreeivi@gmail.com
  *
  *  ParallaxImageView designed to easily achieve parallax effect for image inside view.
  */
-class ParallaxImageView : ImageView {
+class ParallaxImageView : ImageView, ViewTreeObserver.OnPreDrawListener {
 
     private val centerDefault = 0.5F
     private val range = 0.0F..1.0F
@@ -142,7 +145,7 @@ class ParallaxImageView : ImageView {
         get() = if (isSwapParallaxDirections) backedAllowHorizontalScroll else field
 
     private var backedPvf = centerDefault
-    private var oldVerticalFraction:Float = centerDefault
+    private var oldVerticalFraction: Float = centerDefault
     /**
      * Defines vertical relative offset of parallax.
      * Can be changed within 0.0F..1.0F range, and is clamped automatically to its marginal values if exceed.
@@ -175,7 +178,7 @@ class ParallaxImageView : ImageView {
         }
 
     private var backedPhf = centerDefault
-    private var oldHorizontalFraction:Float = centerDefault
+    private var oldHorizontalFraction: Float = centerDefault
 
     /**
      * Defines horizontal relative offset of parallax.
@@ -602,7 +605,24 @@ class ParallaxImageView : ImageView {
     /**
      * See description [OnParallaxFractionChangeListener]
      */
-    var onParallaxFractionChangeListener: OnParallaxFractionChangeListener? = null
+    private var onParallaxFractionChangeListener: OnParallaxFractionChangeListener? = null
+
+    /**
+     * Id of dependant view. See also [dependantParent] and [preDrawListenerWeakReference]
+     */
+    @IdRes
+    private var dependantParentId: Int = 0
+    /**
+     * Defines parent inside which this instance of [ParallaxImageView] is going to update itself (parallax effect)
+     * Parallax parameters should not be changed manually if this
+     */
+    private var dependantParent: ViewGroup? = null
+    /**
+     * Inner [ViewTreeObserver.OnPreDrawListener] instance that is used by this [ParallaxImageView] to update self
+     * when [dependantParent] (possibly defined from xml attribute ([R.styleable.ParallaxImageView_piv_dependant_parent_id])
+     * within [dependantParentId]) is about to redraw itself and thus children, including this view.
+     */
+    private val preDrawListenerWeakReference: WeakReference<ViewTreeObserver.OnPreDrawListener> = WeakReference(this)
 
     constructor(context: Context?) : super(context) {
         setup()
@@ -628,6 +648,7 @@ class ParallaxImageView : ImageView {
             val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ParallaxImageView)
             with(typedArray) {
                 try {
+                    dependantParentId = getResourceId(R.styleable.ParallaxImageView_piv_dependant_parent_id, dependantParentId)
                     parallaxDirectionFlag = getInt(
                             R.styleable.ParallaxImageView_piv_parallax_direction_flag,
                             parallaxDirectionFlag
@@ -742,26 +763,11 @@ class ParallaxImageView : ImageView {
 
     /**
      * inner method that force full recalculation cycle to be happen.
-     * Takes place if any dependant parameters changed.
+     * Takes place if any dependantParent parameters changed.
      */
     private fun invalidateDirty(dirty: Boolean = true) {
         isCalculationDirty = dirty
         invalidate()
-    }
-
-    /**
-     * This function update its parallax (if respective direction flags are met)
-     * according to parent passed on that moment
-     */
-    fun updateParallax(viewGroup: ViewGroup) {
-        val height = viewGroup.height.toFloat()
-        val width = viewGroup.width.toFloat()
-        getDrawingRect(tempRect)
-        viewGroup.offsetDescendantRectToMyCoords(this, tempRect)
-        if (tempRect.bottom >= 0 && tempRect.top <= height)
-            parallaxVerticalFraction = tempRect.yByFraction(1.0F - tempRect.bottom / (height + tempRect.absHeight())) / height
-        if (tempRect.right >= 0 && tempRect.left <= width)
-            parallaxHorizontalFraction = tempRect.xByFraction(1.0F - tempRect.right / (width + tempRect.absWidth())) / width
     }
 
     /**
@@ -825,69 +831,6 @@ class ParallaxImageView : ImageView {
             rectF.right -= paddingRight
             rectF.bottom -= paddingBottom
         }
-
-//        fun clipImageCorners(
-//                dxTranslation: Float = 0.0F,
-//                dyTranslation: Float = 0.0F,
-//                initClipRectIfNeeded: () -> Unit = {
-//                    if (imageCornerClipRectF.isEmpty) {
-//                        imageCornerClipRectF.set(canvas.clipBounds)
-//                        addViewPadding(imageCornerClipTempRectF)
-//                        imageCornerClipRectF.union(imageMaxBoundRectF)
-//                    }
-//                }
-//        ) {
-//            canvas.translate(dxTranslation, dyTranslation)
-//
-//            if ((imageCornerSize > 0.0F || isForceImageCornersWhRatioEqual)
-//                    && imageCornerClipFlag != ImageCornerClipFlag.NONE) {
-//                imageCornerClipRectF.clear()
-//                if (isClipBoundCorner) {
-//                    initClipRectIfNeeded()
-//                    imageCornerClipTempRectF.set(canvas.clipBounds)
-//                    addViewPadding(imageCornerClipTempRectF)
-//                    imageCornerClipRectF.intersect(imageCornerClipTempRectF)
-//                }
-//                if (isClipSourceCorner) {
-//                    initClipRectIfNeeded()
-//                    imageCornerClipRectF.intersect(imageModifiedRectF)
-//                }
-//                if (isClipTensionCorner) {
-//                    initClipRectIfNeeded()
-//                    imageCornerClipTempRectF.set(imageMaxTensionRectF)
-//                    imageCornerClipTempRectF.offset(
-//                            if (parallaxHorizontalImageModifier == -1.0F) -dxTranslation else 0.0F,
-//                            if (parallaxVerticalImageModifier == -1.0F) -dyTranslation else 0.0F
-//                    )
-//                    imageCornerClipRectF.intersect(imageCornerClipTempRectF)
-//                }
-//
-//                if (!imageCornerClipRectF.isEmpty) {
-//                    imageCornerClipPath.rewind()
-//                    val cornerSize = when {
-//                        isForceImageCornersWhRatioEqual -> imageCornerClipRectF.makeSquareAndReturnSize() / 2.0F
-//                        isPreventImageCornerOverlap -> {
-//                            val clampedCornerSize = Math.min(imageCornerClipRectF.minSideSize() / 2.0F, imageCornerSize)
-//                            if (isImageCornerWhRatioChangeEnabled)
-//                                imageCornerClipRectF.inset(
-//                                        Math.min(imageCornerClipRectF.absWidth() / 2.0F, imageCornerSize) - clampedCornerSize,
-//                                        Math.min(imageCornerClipRectF.absHeight() / 2.0F, imageCornerSize) - clampedCornerSize
-//                                )
-//                            clampedCornerSize
-//                        }
-//                        else -> imageCornerSize
-//                    }
-//                    if (imageCornerType == CornerType.ROUND)
-//                        imageCornerClipPath.addRoundRectOverlap(imageCornerClipRectF, cornerSize, cornerSize)
-//                    else imageCornerClipPath.addBevelRect(imageCornerClipRectF, cornerSize, cornerSize)
-//                    imageCornerClipPath.close()
-//                    canvas.clipPath(imageCornerClipPath)
-//                }
-//            }
-//
-//            if (isForceParallaxByScale)
-//                canvas.scale(parallaxForcedScale, parallaxForcedScale, canvasRectF.centerX(), canvasRectF.centerY())
-//        }
 
         fun clipImageCorners(
                 dxTranslation: Float = 0.0F,
@@ -1165,6 +1108,57 @@ class ParallaxImageView : ImageView {
         )
 
         isCalculationDirty = false
+    }
+
+    /**
+     * This function attached this [ParallaxImageView] to dependant parent,
+     * thus enabling former to update own parallax within latter.
+     *
+     * Note that this function does no check whether viewGroup passed contains this [ParallaxImageView]
+     *
+     * Null removes any dependant parent.
+     */
+    fun setDependantParent(viewGroup: ViewGroup) {
+        dependantParent?.viewTreeObserver?.removeOnPreDrawListener(preDrawListenerWeakReference.get())
+        dependantParent = viewGroup
+        dependantParent?.viewTreeObserver?.addOnPreDrawListener(preDrawListenerWeakReference.get())
+    }
+
+    /**
+     * This function update its parallax (if respective direction flags are met)
+     * according to parent passed on that moment
+     */
+    private fun updateParallax(viewGroup: ViewGroup) {
+        val height = viewGroup.height.toFloat()
+        val width = viewGroup.width.toFloat()
+        getDrawingRect(tempRect)
+        viewGroup.offsetDescendantRectToMyCoords(this, tempRect)
+        if (tempRect.bottom >= 0 && tempRect.top <= height)
+            parallaxVerticalFraction = tempRect.yByFraction(1.0F - tempRect.bottom / (height + tempRect.absHeight())) / height
+        if (tempRect.right >= 0 && tempRect.left <= width)
+            parallaxHorizontalFraction = tempRect.xByFraction(1.0F - tempRect.right / (width + tempRect.absWidth())) / width
+    }
+
+    private fun tryFindDependantParent(viewGroup: ViewGroup?) {
+        viewGroup?.apply {
+            if (viewGroup.id == dependantParentId) setDependantParent(viewGroup)
+            else tryFindDependantParent(viewGroup.parent as? ViewGroup)
+        }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        if (dependantParentId > 0) tryFindDependantParent(this.parent as? ViewGroup)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        dependantParent?.viewTreeObserver?.removeOnPreDrawListener(preDrawListenerWeakReference.get())
+    }
+
+    override fun onPreDraw(): Boolean {
+        updateParallax(dependantParent ?: return true)
+        return true
     }
 
     override fun setBackground(background: Drawable?) {

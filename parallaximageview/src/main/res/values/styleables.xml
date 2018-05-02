@@ -19,6 +19,7 @@
             <enum name="bevel" value="2"/>
         </attr>
 
+        <attr name="piv_dependant_parent_id" format="reference"/>
         <attr name="piv_image_corner_size" format="dimension"/>
         <attr name="piv_view_corner_size" format="dimension"/>
         <attr name="piv_background_corner_radius" format="dimension"/>

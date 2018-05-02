@@ -13,10 +13,9 @@ import devlight.io.xtreeivi.sample.model.ListItemModel
 /**
  * Created by XtreeIvI on 09.04.2018.
  */
-class MainListAdapter(var context: Context): BaseMultiItemQuickAdapter<ListItemModel, BaseViewHolder>(null) {
+class MainListAdapter(var context: Context) : BaseMultiItemQuickAdapter<ListItemModel, BaseViewHolder>(null) {
 
     private val fitCenterNoClipTransformation = FitCenterNoClipTransformation()
-
 
     init {
         addItemType(0, R.layout.item_list_example_type_0)
@@ -27,7 +26,7 @@ class MainListAdapter(var context: Context): BaseMultiItemQuickAdapter<ListItemM
     }
 
     override fun convert(helper: BaseViewHolder, item: ListItemModel) {
-        when(item.itemType) {
+        when (item.itemType) {
             0 -> {
                 val image = helper.getView<ParallaxImageView>(R.id.parallaxImageViewItem)
                 Glide.with(context).load(item.images[0])
