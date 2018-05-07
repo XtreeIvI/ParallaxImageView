@@ -14,6 +14,6 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.XtreeIvI:ParallaxImageView:1.0.1'
+    implementation 'com.github.XtreeIvI:ParallaxImageView:1.0.2'
 }
 ```
