@@ -40,12 +40,6 @@ class ParallaxImageView : ImageView, ViewTreeObserver.OnPreDrawListener {
     private val range = 0.0F..1.0F
 
     /**
-     * Rect used as holder when calculating parallax relative to view passed
-     * @see [updateParallax]
-     */
-    private val tempRect = Rect()
-
-    /**
      * Canvas coordinates before translation
      */
     private val canvasRectF = RectF()
@@ -608,6 +602,23 @@ class ParallaxImageView : ImageView, ViewTreeObserver.OnPreDrawListener {
     private var onParallaxFractionChangeListener: OnParallaxFractionChangeListener? = null
 
     /**
+     * Rect used as coordinates holder for dependant view coordinates
+     * @see [updateParallax]
+     */
+    private val dependantViewDrawingRect = Rect()
+    /**
+     * Rect used as coordinates holder for current view
+     * @see [updateParallax]
+     */
+    private val relativeDrawingRect = Rect()
+
+    /**
+     * Used as temporary point holder to shear [dependantViewDrawingRect] and [relativeDrawingRect]
+     * into proper position
+     */
+    private val locationInWindow = IntArray(2)
+
+    /**
      * Id of dependant view. See also [dependantParent] and [preDrawListenerWeakReference]
      */
     @IdRes
@@ -1129,14 +1140,17 @@ class ParallaxImageView : ImageView, ViewTreeObserver.OnPreDrawListener {
      * according to parent passed on that moment
      */
     private fun updateParallax(viewGroup: ViewGroup) {
-        val height = viewGroup.height.toFloat()
-        val width = viewGroup.width.toFloat()
-        getDrawingRect(tempRect)
-        viewGroup.offsetDescendantRectToMyCoords(this, tempRect)
-        if (tempRect.bottom >= 0 && tempRect.top <= height)
-            parallaxVerticalFraction = tempRect.yByFraction(1.0F - tempRect.bottom / (height + tempRect.absHeight())) / height
-        if (tempRect.right >= 0 && tempRect.left <= width)
-            parallaxHorizontalFraction = tempRect.xByFraction(1.0F - tempRect.right / (width + tempRect.absWidth())) / width
+        getDrawingRect(relativeDrawingRect)
+        getLocationOnScreen(locationInWindow)
+        relativeDrawingRect.offsetTo(locationInWindow[0], locationInWindow[1])
+
+        viewGroup.getDrawingRect(dependantViewDrawingRect)
+        viewGroup.getLocationOnScreen(locationInWindow)
+        dependantViewDrawingRect.offsetTo(locationInWindow[0], locationInWindow[1])
+        dependantViewDrawingRect.inset(-relativeDrawingRect.absWidth() / 2, -relativeDrawingRect.absHeight() / 2)
+
+        parallaxVerticalFraction = (relativeDrawingRect.centerY() - dependantViewDrawingRect.top) / dependantViewDrawingRect.absHeight().toFloat()
+        parallaxHorizontalFraction = (relativeDrawingRect.centerX() - dependantViewDrawingRect.left) / dependantViewDrawingRect.absWidth().toFloat()
     }
 
     private fun tryFindDependantParent(viewGroup: ViewGroup?) {
